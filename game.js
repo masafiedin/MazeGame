@@ -44,13 +44,13 @@ function userLost() {
   banner(false);
   turnBordersRed();
   score-=10;
+  updateScore();
 }
 
 function userWon() {
   bordersReset();
   banner(true);
-  endGame.removeEventListener("mouseover",userWon)
-  tempBoundaries.removeEventListener("mouseover",userLost)
+  updateScore();
   console.log("test")
   score+=5;
 }
@@ -71,6 +71,13 @@ function turnBordersRed() {
     tempBoundaries[i].style["border-color"] = "red";
   }
 }
+
+function updateScore(){
+    var tempBoundaries = document.getElementsByClassName("boundary");
+    tempBoundaries[5].innerHTML = score;
+
+}
+
 
 function banner(state) {
   //true for winning, false fr=or losing
